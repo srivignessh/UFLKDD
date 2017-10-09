@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body bgcolor="#E6E6FA">
+<div id="test">
+<h3> Unsupervised Feature Learning in Network Intrustion Detection Systems </h3>
+<h4> Actual Label : {{attack}}    </h4>
+<h4> Predicted Label : {{pred}}      </h4>
+<h4> Predicted Attack type : {{pdtype}} </h4>
+<p>  Packet Features </p>
+<p>
+<table class="table">
+{% for key, value in test.iteritems() %}
+   <tr>
+        <th> {{ key }} </th>
+        <td> {{ value }} </td>
+   </tr>
+{% endfor %}
+</table>
+</p>
+</div>
+<script>
+function test()
+{
+ $.ajax({url: "/", success: function(result){
+        $("#test").html(result);
+    }});
+}
+setInterval(test(),30000000);
+</script>
+</body> 
+</html>
